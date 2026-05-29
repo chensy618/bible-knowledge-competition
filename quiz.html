@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="圣经知识竞赛横版答题页，支持中英切换和多组同时答题。"
+    />
+    <title>圣经知识竞赛答题页</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell page-shell-wide">
+      <header class="hero hero-quiz">
+        <div class="hero-copy">
+          <div class="hero-topbar">
+            <a id="back-link" class="back-link" href="index.html"></a>
+            <div class="language-switch" role="group" aria-label="Language switch">
+              <button id="lang-zh-btn" type="button" class="lang-btn" data-lang="zh">
+                中文
+              </button>
+              <button id="lang-en-btn" type="button" class="lang-btn" data-lang="en">
+                English
+              </button>
+            </div>
+          </div>
+
+          <p id="quiz-kicker" class="kicker"></p>
+          <h1 id="quiz-title"></h1>
+          <p id="quiz-description" class="hero-text"></p>
+
+          <div class="hero-tags">
+            <span id="group-summary-pill"></span>
+            <span id="timer-summary-pill"></span>
+            <span id="question-summary-pill"></span>
+          </div>
+        </div>
+
+        <aside class="hero-card timer-card">
+          <p id="timer-kicker" class="kicker"></p>
+          <div id="timer-display" class="timer-display">00:00</div>
+          <p id="timer-status" class="hero-card-copy"></p>
+          <div class="timer-actions">
+            <button id="start-timer-btn" type="button" class="secondary-btn"></button>
+            <button id="pause-timer-btn" type="button" class="ghost-btn"></button>
+          </div>
+        </aside>
+      </header>
+
+      <section class="panel scoreboard-panel">
+        <div class="panel-header compact-header">
+          <div>
+            <p id="scoreboard-kicker" class="kicker"></p>
+            <h2 id="scoreboard-heading"></h2>
+          </div>
+          <span id="scoreboard-rule" class="support-text"></span>
+        </div>
+
+        <div id="scoreboard" class="scoreboard"></div>
+      </section>
+
+      <section class="panel round-toolbar">
+        <div class="panel-header round-toolbar-header">
+          <div>
+            <p id="round-kicker" class="kicker"></p>
+            <h2 id="round-heading"></h2>
+          </div>
+
+          <div class="question-actions">
+            <button id="next-round-btn" type="button" class="primary-btn"></button>
+            <button id="restart-quiz-btn" type="button" class="secondary-btn"></button>
+          </div>
+        </div>
+
+        <div id="progress-list" class="round-progress"></div>
+      </section>
+
+      <section class="panel board-panel">
+        <div class="panel-header compact-header">
+          <div>
+            <p id="board-kicker" class="kicker"></p>
+            <h2 id="board-heading"></h2>
+          </div>
+          <span id="round-status-pill" class="meta-pill"></span>
+        </div>
+
+        <div id="group-board" class="group-board"></div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="shared.js"></script>
+    <script src="data/questions.js"></script>
+    <script src="quiz.js"></script>
+  </body>
+</html>

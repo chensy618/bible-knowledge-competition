@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="圣经知识竞赛设置页，支持中英切换、分组数量设置和每题倒计时。"
+    />
+    <title>圣经知识竞赛设置</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero hero-landing">
+        <div class="hero-copy">
+          <div class="hero-topbar">
+            <div class="brand-logo" aria-label="Bible Knowledge Competition">
+              <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                <path
+                  d="M14 18h14c5.5 0 10 4.5 10 10v18c-2.2-2-5.2-3-10-3H14z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+                <path
+                  d="M50 18H36c-5.5 0-10 4.5-10 10v18c2.2-2 5.2-3 10-3h14z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                />
+                <path
+                  d="M32 18v28"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                />
+                <path
+                  d="M32 22h8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                />
+                <path
+                  d="M36 18v8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="3"
+                />
+              </svg>
+            </div>
+            <div class="language-switch" role="group" aria-label="Language switch">
+              <button id="lang-zh-btn" type="button" class="lang-btn" data-lang="zh">
+                中文
+              </button>
+              <button id="lang-en-btn" type="button" class="lang-btn" data-lang="en">
+                English
+              </button>
+            </div>
+          </div>
+
+          <h1 id="hero-heading"></h1>
+          <p id="hero-text" class="hero-text"></p>
+
+          <div class="hero-tags">
+            <span id="question-count-badge"></span>
+            <span id="unique-mode-badge"></span>
+            <span id="simultaneous-mode-badge"></span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <p id="flow-kicker" class="kicker"></p>
+          <h2 id="flow-title"></h2>
+          <p id="flow-text"></p>
+        </aside>
+      </header>
+
+      <main class="landing-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p id="setup-kicker" class="kicker"></p>
+              <h2 id="setup-title"></h2>
+            </div>
+          </div>
+
+          <form id="setup-form" class="setup-form">
+            <label>
+              <span id="competition-title-label"></span>
+              <input
+                id="competition-title"
+                name="competitionTitle"
+                type="text"
+                maxlength="60"
+              />
+            </label>
+
+            <div class="split-fields">
+              <label>
+                <span id="group-count-label"></span>
+                <input
+                  id="group-count"
+                  name="groupCount"
+                  type="number"
+                  min="1"
+                  max="8"
+                  step="1"
+                />
+              </label>
+
+              <label>
+                <span id="question-timer-label"></span>
+                <input
+                  id="question-timer"
+                  name="questionTimer"
+                  type="number"
+                  min="10"
+                  max="300"
+                  step="5"
+                />
+              </label>
+            </div>
+
+            <p id="capacity-hint" class="support-text"></p>
+
+            <section class="subpanel">
+              <div class="panel-header compact-header">
+                <div>
+                  <p id="group-kicker" class="kicker"></p>
+                  <h3 id="group-title"></h3>
+                </div>
+                <p id="group-support" class="support-text"></p>
+              </div>
+
+              <div id="group-fields" class="group-fields"></div>
+            </section>
+
+            <div class="setup-actions">
+              <button id="start-quiz-btn" type="submit" class="primary-btn"></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <p id="preview-kicker" class="kicker"></p>
+              <h2 id="preview-title"></h2>
+            </div>
+          </div>
+
+          <div class="preview-stack">
+            <article class="mini-card">
+              <span class="step-badge">1</span>
+              <h3 id="preview-step1-title"></h3>
+              <p id="preview-step1-text"></p>
+            </article>
+
+            <article class="mini-card">
+              <span class="step-badge">2</span>
+              <h3 id="preview-step2-title"></h3>
+              <p id="preview-step2-text"></p>
+            </article>
+
+            <article class="mini-card">
+              <span class="step-badge">3</span>
+              <h3 id="preview-step3-title"></h3>
+              <p id="preview-step3-text"></p>
+            </article>
+
+            <article class="callout-card">
+              <p id="bank-kicker" class="kicker"></p>
+              <h3 id="question-bank-count"></h3>
+              <p id="question-bank-text"></p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="shared.js"></script>
+    <script src="data/questions.js"></script>
+    <script src="setup.js"></script>
+  </body>
+</html>
