@@ -795,13 +795,16 @@
       return left.groupIndex - right.groupIndex;
     });
 
+    let currentRank = 0;
+
     standings.forEach(function (entry, index) {
       if (index > 0 && entry.totalScore === standings[index - 1].totalScore) {
         entry.rank = standings[index - 1].rank;
         return;
       }
 
-      entry.rank = index + 1;
+      currentRank += 1;
+      entry.rank = currentRank;
     });
 
     return standings;
