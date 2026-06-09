@@ -944,6 +944,7 @@
       state.viewRoundIndex = state.rounds.length - 1;
       state.timeLeft = 0;
       persistAndRender();
+      showToast(shared.translate("quiz", "toastFinished", state.language));
       return;
     }
 

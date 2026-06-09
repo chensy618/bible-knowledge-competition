@@ -417,6 +417,10 @@
         zh: "已按当前分组重新开始比赛。",
         en: "The quiz was restarted with the current groups.",
       },
+      toastFinished: {
+        zh: "最后一轮已结束，本次比赛已完成。",
+        en: "The final round has ended. This quiz is now complete.",
+      },
       unansweredReveal: {
         zh: "未作答，时间结束后自动揭晓正确答案。",
         en: "No answer submitted. The correct answer is revealed after time expired.",
