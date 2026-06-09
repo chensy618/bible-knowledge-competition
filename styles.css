@@ -27,11 +27,13 @@
 
 html {
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   color: var(--ink);
   font-family: "Trebuchet MS", "Microsoft YaHei", "PingFang SC", sans-serif;
   background:
@@ -106,7 +108,10 @@ a:focus-visible {
 .page-shell {
   width: min(1280px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 2rem 0 3rem;
+  padding-top: max(2rem, env(safe-area-inset-top));
+  padding-right: max(0rem, env(safe-area-inset-right));
+  padding-bottom: max(3rem, env(safe-area-inset-bottom));
+  padding-left: max(0rem, env(safe-area-inset-left));
 }
 
 .page-shell-wide {
@@ -272,11 +277,13 @@ a:focus-visible {
 
 .lang-btn {
   min-width: 84px;
+  min-height: 44px;
   border-radius: 999px;
   padding: 0.55rem 0.85rem;
   background: transparent;
   color: var(--muted);
   font-weight: 700;
+  touch-action: manipulation;
 }
 
 .lang-btn.active {
@@ -393,9 +400,11 @@ a:focus-visible {
 .secondary-btn,
 .ghost-btn,
 .option-select-btn {
+  min-height: 44px;
   border-radius: 999px;
   padding: 0.8rem 1.1rem;
   font-weight: 700;
+  touch-action: manipulation;
 }
 
 .primary-btn {
@@ -798,12 +807,14 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   min-height: 3rem;
+  min-height: 48px;
   border: 1px solid rgba(79, 48, 22, 0.12);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.84);
   color: var(--ink);
   font-weight: 800;
   font-size: 1.15rem;
+  touch-action: manipulation;
 }
 
 .board-answer-btn:disabled {
@@ -938,7 +949,10 @@ a:focus-visible {
   .page-shell,
   .page-shell-wide {
     width: min(100% - 1rem, 1500px);
-    padding-top: 1rem;
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-right: max(0rem, env(safe-area-inset-right));
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+    padding-left: max(0rem, env(safe-area-inset-left));
   }
 
   .hero-copy,
@@ -963,6 +977,7 @@ a:focus-visible {
 
   .language-switch {
     align-self: flex-start;
+    flex-wrap: wrap;
   }
 
   .hero h1 {
@@ -982,5 +997,95 @@ a:focus-visible {
   .group-label-row {
     flex-direction: row;
     align-items: center;
+  }
+
+  .timer-actions,
+  .question-actions,
+  .setup-actions {
+    flex-direction: column;
+  }
+
+  .timer-actions > *,
+  .question-actions > *,
+  .setup-actions > * {
+    width: 100%;
+  }
+
+  .board-cell {
+    padding: 0.9rem;
+  }
+}
+
+@media (max-width: 560px) {
+  html {
+    font-size: 15px;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .subpanel {
+    padding: 1rem;
+  }
+
+  .hero-topbar,
+  .panel-header,
+  .round-toolbar-header,
+  .score-card-top {
+    gap: 0.75rem;
+  }
+
+  .score-rank {
+    width: 100%;
+  }
+
+  .round-progress {
+    flex-direction: column;
+  }
+
+  .progress-card {
+    padding: 0.8rem;
+  }
+
+  .board-answer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .board-question-prompt {
+    font-size: 1.08rem;
+  }
+
+  .group-name {
+    font-size: 1.08rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button:hover {
+    transform: none;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  .page-shell,
+  .page-shell-wide {
+    width: min(100% - 1.25rem, 1500px);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .board-row {
+    grid-template-columns: 1fr;
+  }
+
+  .board-cell {
+    border-right: 0;
+    border-bottom: 1px solid rgba(79, 48, 22, 0.12);
+  }
+
+  .board-cell:last-child {
+    border-bottom: 0;
   }
 }
